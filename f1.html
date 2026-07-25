@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    form { max-width: 360px; padding: 16px; border: 1px solid #ccc; border-radius: 8px; background: #f8f8f8; }
+    label { display: block; margin-top: 12px; }
+    input { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #bbb; border-radius: 4px; box-sizing: border-box; }
+    input[type="submit"] { width: auto; margin-top: 16px; background: #007bff; color: white; border: none; cursor: pointer; }
+    .error { color: #b30000; margin-top: 8px; }
+</style>
+<body>
+    <form name="studentForm" onsubmit="return validateForm()">
+        <label>Firstname:<input type="text" name="fname"></label>
+        <label>Lastname:<input type="text" name="lname"></label>
+        <label>Age:<input type="number" name="age"></label>
+        <label>Email:<input type="text" name="email"></label>
+        <label>Phone number:<input type="number" name="num"></label>
+        <label>Date of birth:<input type="date" name="dob"></label>
+        <input type="submit" value="Submit">
+        <div id="errorMessage" class="error"></div>
+    </form>
+    <script>
+        function validateForm() {
+            var form = document.studentForm;
+            var error = document.getElementById('errorMessage');
+            error.textContent = '';
+
+            if (!form.fname.value.trim())
+            return showError('Enter firstname.', form.fname);
+            if (!form.lname.value.trim()){
+                return showError('Enter lastname.', form.lname);
+
+            }
+           
+            if (!form.age.value || Number(form.age.value) <= 0)
+             return showError('Enter a valid age.', form.age);
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim()))
+             return showError('Enter a valid email.', form.email);
+            if (!form.num.value.trim() || form.num.value.trim().length !== 10)
+             return showError('Enter a valid phone number.', form.num);
+            if (!form.dob.value) return showError('Select date of birth.', form.dob);
+
+            alert('Student form is valid.');
+            return true;
+
+            function showError(msg, field) {
+                error.textContent = msg;
+                field.focus();
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
