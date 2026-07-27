@@ -50,8 +50,8 @@ A secure, transparent, and responsive portal designed to streamline inventory tr
 
 ### 📊 GitHub Stats
 
-![Hasini's GitHub Stats](https://vercel.app)
-![Top Langs](https://vercel.app)
+![Hasini's GitHub Stats](https://github.com)
+
 
 ---
 
