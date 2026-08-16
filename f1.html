@@ -1,61 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    body { font-family: Arial, sans-serif; margin: 24px; }
-    form { max-width: 360px; padding: 16px; border: 1px solid #ccc; border-radius: 8px; background: #f8f8f8; }
-    label { display: block; margin-top: 12px; }
-    input { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #bbb; border-radius: 4px; box-sizing: border-box; }
-    input[type="submit"] { width: auto; margin-top: 16px; background: #007bff; color: white; border: none; cursor: pointer; }
-    .error { color: #b30000; margin-top: 8px; }
-</style>
-<body>
-    <form name="studentForm" onsubmit="return validateForm()">
-        <label>Firstname:<input type="text" name="fname"></label>
-        <label>Lastname:<input type="text" name="lname"></label>
-        <label>Age:<input type="number" name="age"></label>
-        <label>Email:<input type="text" name="email"></label>
-        <label>Phone number:<input type="number" name="num"></label>
-        <label>Date of birth:<input type="date" name="dob"></label>
-        <input type="submit" value="Submit">
-        <div id="errorMessage" class="error"></div>
-        <p>Note: This form is for demonstration purposes only. Please ensure to handle user data responsibly and securely in a real application.</p>
-        <h1>Student Form new</h1>
-    </form>
-    <script>
-        function validateForm() {
-            var form = document.studentForm;
-            var error = document.getElementById('errorMessage');
-            error.textContent = '';
 
-            if (!form.fname.value.trim())
-            return showError('Enter firstname.', form.fname);
-            if (!form.lname.value.trim()){
-                return showError('Enter lastname.', form.lname);
+    <title>Registration Form</title>
 
-            }
-           
-            if (!form.age.value || Number(form.age.value) <= 0)
-             return showError('Enter a valid age.', form.age);
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim()))
-             return showError('Enter a valid email.', form.email);
-            if (!form.num.value.trim() || form.num.value.trim().length !== 10)
-             return showError('Enter a valid phone number.', form.num);
-            if (!form.dob.value) return showError('Select date of birth.', form.dob);
-
-            alert('Student form is valid.');
-            return true;
-
-            function showError(msg, field) {
-                error.textContent = msg;
-                field.focus();
-                return false;
-            }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
+
+        .container {
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #287a75;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #1f625e;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Registration Form</h2>
+
+        <form id="registrationForm">
+
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="phone">Phone Number</label>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                pattern="[0-9]{10}"
+                placeholder="10-digit phone number"
+                required
+            >
+
+            <label for="email">Gmail</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
+                required
+            >
+
+            <label for="rollNo">Roll Number</label>
+            <input
+                type="text"
+                id="rollNo"
+                name="rollNo"
+                required
+            >
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <div id="message">
+            Submitted!
+        </div>
+
+    </div>
+
+    <script>
+        document
+            .getElementById("registrationForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                this.reset();
+
+                document.getElementById("message").style.display = "block";
+            });
     </script>
+
 </body>
+
 </html>
