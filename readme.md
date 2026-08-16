@@ -1,6 +1,4 @@
 # Hi there, I'm Hasini Jella! 👋
-![Static Badge](https://img.shields.io/badge/hasini?style=for-the-badge&logo=java&logoColor=green&color=blue)
-
 
 I am a passionate Software Developer focused on building impactful web and embedded systems solutions. I enjoy leveraging AI, IoT, and modern web frameworks to solve real-world problems. 
 
